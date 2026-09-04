@@ -7,7 +7,7 @@ def index(request):
         title = request.POST.get('titulo')
         content = request.POST.get('detalhes')
         # TAREFA: Utilize o title e content para criar um novo Note no banco de dados
-        note = Note(titulo=title, detalhes=content)
+        Note.objects.create(title=title, content=content)
         return redirect('index')
     else:
         all_notes = Note.objects.all()
