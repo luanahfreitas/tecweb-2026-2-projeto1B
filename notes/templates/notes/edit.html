@@ -1,0 +1,14 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+<form class="edit-card" method="post">
+  {% csrf_token %}
+  <input class="edit-card-title" type="text" id="titulo" name="titulo" value="{{ note.title }}" />
+  <textarea class="edit-card-content" id="detalhes" name="detalhes">{{ note.content }}</textarea>
+  <div class="edit-card-actions">
+    <a class="btn btn-secondary" href="{% url 'index' %}">Voltar</a>
+    <button class="btn" type="submit">Atualizar</button>
+  </div>
+</form>
+{% endblock %}

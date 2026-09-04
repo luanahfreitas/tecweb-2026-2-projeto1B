@@ -1,4 +1,5 @@
 {% extends "notes/base.html" %}
+{% load static %}
 
 {% block content %}
 <form class="form-card" method="post">
@@ -13,6 +14,14 @@
   <div class="card">
     <div class="card-header">
       <h3 class="card-title">{{ note.title }}</h3>
+      <div class="card-actions">
+        <a class="card-edit" href="{% url 'edit' note.id %}">
+        <img src="{% static 'notes/img/edit.png' %}" alt="Editar" />
+        </a>
+        <a class="card-delete" href="{% url 'delete' note.id %}">
+        <img src="{% static 'notes/img/lixeira.png' %}" alt="Excluir" />
+        </a>
+    </div>
     </div>
     <div class="card-content">
       <p>{{ note.content }}</p>
