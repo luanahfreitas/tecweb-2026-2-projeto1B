@@ -2,6 +2,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get-it</title>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
@@ -13,20 +17,19 @@
       href="https://fonts.googleapis.com/css2?family=Roboto&family=Permanent+Marker&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{% static 'notes/getit.css' %}">
-    <meta charset="UTF-8" />
-    <title>Get-it</title>
+    <link rel="stylesheet" href="{% static 'notes/getit.css' %}" />
   </head>
 
   <body>
-    <header class="appbar">
-      <img class="logo" src="{% static 'notes/img/logo-getit.png' %}" alt="Get-it logo" />
+    <div class="appbar">
+      <img src="{% static 'notes/img/logo-getit.png' %}" class="logo" />
       <span class="subtitle">Como o Post-it, mas com outro verbo</span>
-    </header>
-
-    <div class="container">
-      {% block content %} {% endblock %}
+      <a href="{% url 'tags' %}" style="margin-left:auto; color:#2c2c2c;">Tags</a>
     </div>
+
+    <main class="container">
+      {% block content %} {% endblock %}
+    </main>
 
     <script src="{% static 'notes/getit.js' %}"></script>
   </body>

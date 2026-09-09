@@ -6,6 +6,7 @@
   {% csrf_token %}
   <input class="form-card-title" type="text" id="titulo" name="titulo" placeholder="Título" />
   <textarea class="autoresize" id="detalhes" name="detalhes" placeholder="Detalhes"></textarea>
+  <input type="text" name="tags" placeholder="Tags (separadas por vírgula, ex: tag1, tag2)" style="border:none; outline:none; font-family:'Roboto',sans-serif; font-size:14px; color:#4c4c4c; margin-bottom:16px; padding:0;"/>
   <button class="btn" type="submit">Salvar</button>
 </form>
 
@@ -24,7 +25,12 @@
     </div>
     </div>
     <div class="card-content">
-      <p>{{ note.content }}</p>
+    <p>{{ note.content }}</p>
+    </div>
+    <div class="tag-badges">
+        {% for tag in note.tags.all %}
+        <a href="{% url 'tag_detail' tag.id %}" class="tag-badge">#{{ tag.name }}</a>
+        {% endfor %}
     </div>
   </div>
   {% endfor %}
